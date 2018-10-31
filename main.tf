@@ -26,7 +26,7 @@ resource "aws_api_gateway_integration" "integration" {
   rest_api_id             = "${aws_api_gateway_rest_api.api.id}"
   resource_id             = "${aws_api_gateway_resource.resource.id}"
   http_method             = "${aws_api_gateway_method.method.http_method}"
-  integration_http_method = "${var.api_gateway_endpoint_method}"
+  integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:${data.aws_region.current.name}:lambda:path/2015-03-31/functions/arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:function:${aws_lambda_function.lambda.function_name}/invocations"
 }
@@ -77,7 +77,7 @@ resource "aws_lambda_function" "lambda" {
   filename         = "${data.archive_file.lambda_zip.output_path}"
   function_name    = "${var.lambda_function_name}"
   role             = "${aws_iam_role.role.arn}"
-  handler          = "${var.lambda_handler}${var.lambda_handler_method}"
+  handler          = "${var.lambda_handler}.${var.lambda_handler_method}"
   runtime          = "${var.lambda_runtime}"
   source_code_hash = "${data.archive_file.lambda_zip.output_base64sha256}"
 }
