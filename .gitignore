@@ -10,3 +10,5 @@
 
 # generated zip files
 *.zip
+
+node_modules
