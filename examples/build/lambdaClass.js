@@ -7,5 +7,6 @@ exports.handler = (event, context, callback) => {
     },
     body: JSON.stringify(event.path),
   };
+  console.log('event', event)
   callback(null, response);
 };
