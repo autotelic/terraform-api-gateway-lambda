@@ -37,3 +37,7 @@ variable "lambda_zip_source_dir" {
 variable "api_gateway_lambda_iam_role" {
   description = "Name of the IAM role for lambda on AWS"
 }
+
+variable "cloudwatch_iam_role_name" {
+  description = "Name of the IAM role for cloudwatch on AWS"
+}

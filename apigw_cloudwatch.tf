@@ -4,7 +4,7 @@ resource "aws_api_gateway_account" "api_gateway_logging" {
 }
 
 resource "aws_iam_role" "cloudwatch" {
-  name = "api_gateway_cloudwatch_global"
+  name = "${var.cloudwatch_iam_role_name}"
 
   assume_role_policy = <<EOF
 {
