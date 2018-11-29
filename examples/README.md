@@ -1,4 +1,4 @@
-# What services does this set up?
+# What AWS services does this set up?
 
 - Lambda
 - API Gateway
@@ -12,11 +12,15 @@
 Create a folder `infrastructure` in the top level of your project, which should be parallel to the `build` folder of your source code for the Lamda function.
 In this example we have set up all the services in region `us-west-2`, but this can be changed to whichever region is closest to you.
 
-To use this module, add two files in your folder `infrastructure`: 1. `main.tf` and `config.tf`:
+To use this module, add two files in your folder `infrastructure`: 
+1. `main.tf`
+2. `config.tf
 
-**main.tf**
-This file sets up all your variables that the module expects to be set, the names below are all examples and should be replaced with names related to your project.
-Keep the path shown at `source` as this is the reference to use your variables in conjuction with this `terraform-api-gateway-lambda` module.
+**main.tf** 
+
+This file sets up all your variables that the module expects. 
+The names below are all examples and should be replaced with names related to your project.
+Keep the path shown at `source` as is - it references this `terraform-api-gateway-lambda` module to use with your variables.
 
 ```hcl
 
@@ -41,12 +45,13 @@ output "invoke_url" {
   value = "${module.http_lambda.invoke_url}"
 }
 
-```
+```  
 
 
-**config.tf**
-This file sets up a bucket to store your .tfstate in so multiple users can access it and run `terraform` commands against it.
-Terraform detects the `config.tf` file and therefore does not store the .tfstate on your local machine, but pushes it up to an s3 bucket.
+**config.tf**  
+
+This file sets up a bucket to store your .tfstate so multiple users can access it and run `terraform` commands against it.
+Terraform detects the `config.tf` file and therefore does not store the .tfstate on your local machine, but pushes it to an s3 bucket.
 The example bucket name `my-name-terraform-state` should be changed to a specific name for your project.
 __Keep in mind, bucket names are globally unique, so if your name already exists, try a different one.__
 
