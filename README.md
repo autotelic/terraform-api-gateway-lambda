@@ -22,3 +22,5 @@ module "http_lambda" {
 }
 
 ```
+
+More detailed info on how to use this terraform module with your project can be found in the [example](https://github.com/autotelic/terraform-api-gateway-lambda/tree/master/examples)
