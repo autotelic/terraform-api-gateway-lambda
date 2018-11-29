@@ -14,7 +14,7 @@ In this example we have set up all the services in region `us-west-2`, but this 
 
 To use this module, add two files in your folder `infrastructure`: 
 1. `main.tf`
-2. `config.tf
+2. `config.tf`
 
 **main.tf** 
 
